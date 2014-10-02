@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AjMessages>
+  <Host Name="Server1" Address="http://localhost:50002/AjMessages" Activate="true">
+    <Application Name="AjMessages">
+      <Node Name="Administration"/>
+    </Application>
+    <Application Name="WebCrawler">
+      <Node Name="Controller"/>
+      <Node Name="Dispatcher"/>
+      <Node Name="Harvester"/>
+      <Node Name="Downloader"/>
+    </Application>
+  </Host>
+
+  <Host Name="Server2" Address="http://localhost:50003/AjMessages">
+    <Application Name="AjMessages">
+      <Node Name="Administration"/>
+    </Application>
+    <Application Name="WebCrawler">
+      <Node Name="Dispatcher"/>
+      <Node Name="Harvester"/>
+      <Node Name="Downloader"/>
+    </Application>
+  </Host>
+</AjMessages>

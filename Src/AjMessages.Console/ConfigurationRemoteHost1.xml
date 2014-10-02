@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AjMessages>
+
+  <Host Name="Host1" Address="http://localhost:50000/AjMessages">
+    <Application Name="App1">
+      <Node Name="Node1"/>
+      <Node Name="Node2"/>
+    </Application>
+  </Host>
+</AjMessages>

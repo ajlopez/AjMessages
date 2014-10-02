@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AjMessages>
+  <Application Name="AjMessages">
+    <Node Name="Administration">
+      <Handler Name="ConfigureHandler" Type="AjMessages.ConfigureHandler, AjMessages"/>
+      <Handler Name="PrintHandler" Type="AjMessages.PrintHandler, AjMessages"/>
+      <Handler Name="PrintMessageHandler" Type="AjMessages.PrintMessageHandler, AjMessages"/>
+      <Handler Name="ConfigurePipeline">
+        <Handler Name="PrintHandler">
+          <Property Name="Text" Value="Reconfiguring server..."/>
+        </Handler>
+        <Handler Name="ConfigureHandler"/>
+      </Handler>
+      <Action Name="Configure" Handler="ConfigurePipeline"/>
+    </Node>
+  </Application>
+  
+  <Host Name="Server2" Address="http://localhost:50003/AjMessages" Activate="true">
+    <Application Name="AjMessages">
+      <Node Name="Administration"/>
+    </Application>
+  </Host>
+</AjMessages>

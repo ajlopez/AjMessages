@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AjMessages>
+  <Application Name="WebCrawler">
+    <Node Name="Dispatcher">
+      <Handler Name="DispatcherHandler" Type="AjMessages.WebCrawler.Handlers.Dispatcher, AjMessages.WebCrawler"/>
+      <Action Name="Dispatch" Handler="DispatcherHandler"/>
+    </Node>
+    <Node Name="Harvester">
+      <Handler Name="HarvesterHandler" Type="AjMessages.WebCrawler.Handlers.Harvester, AjMessages.WebCrawler"/>
+      <Action Name="Harvest" Handler="HarvesterHandler"/>
+    </Node>
+    <Node Name="Downloader">
+      <Handler Name="DownloaderHandler" Type="AjMessages.WebCrawler.Handlers.Downloader, AjMessages.WebCrawler"/>
+      <Action Name="Download" Handler="DownloaderHandler"/>
+    </Node>
+    <Node Name="Controller">
+      <Handler Name="ResolverHandler" Type="AjMessages.WebCrawler.Handlers.Resolver, AjMessages.WebCrawler"/>
+      <Action Name="Resolve" Handler="ResolverHandler"/>
+    </Node>
+  </Application>
+</AjMessages>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AjMessages>
+  <Application Name="AjMessages">
+    <Node Name="Administration">
+      <Handler Name="ConfigureHandler" Type="AjMessages.ConfigureHandler, AjMessages"/>
+      <Handler Name="PrintHandler" Type="AjMessages.PrintHandler, AjMessages"/>
+      <Handler Name="PrintMessageHandler" Type="AjMessages.PrintMessageHandler, AjMessages"/>
+      <Handler Name="ConfigurePipeline">
+        <Handler Name="PrintHandler">
+          <Property Name="Text" Value="Reconfiguring server..."/>
+        </Handler>
+        <Handler Name="ConfigureHandler"/>
+      </Handler>
+      <Action Name="Configure" Handler="ConfigurePipeline"/>
+    </Node>
+  </Application>
+
+  <Application Name="App1">
+    <Node Name="Node1">
+      <Handler Name="PrintMessageHandler" Type="AjMessages.PrintMessageHandler, AjMessages"/>
+      <Handler Name="PostHandler" Type="AjMessages.PostHandler, AjMessages"/>
+      <Handler Name="DecrementHandler" Type="AjMessages.SampleApp.Handlers.DecrementHandler, AjMessages.SampleApp"/>
+      <Handler Name="Pipeline1">
+        <Handler Name="DecrementHandler"/>
+        <Handler Name="PostHandler">
+          <Property Name="Action" Value="App1/Node1/Process"/>
+        </Handler>
+      </Handler>
+      <Action Name="Process" Handler="Pipeline1"/>
+    </Node>
+    <Node Name="Node2"/>
+  </Application>
+
+  <Host Name="Server1" Activate="true">
+    <Application Name="AjMessages">
+      <Node Name="Administration"/>
+    </Application>
+    <Application Name="App1">
+      <Node Name="Node1"/>
+      <Node Name="Node2"/>
+    </Application>
+  </Host>
+
+  <Host Name="Server2" Address="http://localhost:50002/ajmessages/node">
+    <Application Name="AjMessages">
+      <Node Name="Administration"/>
+    </Application>
+    <Application Name="App1">
+      <Node Name="Node1"/>
+      <Node Name="Node2"/>
+    </Application>
+  </Host>
+</AjMessages>

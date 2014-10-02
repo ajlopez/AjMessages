@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AjMessages>
+  
+  <Application Name="App2">
+    <Node Name="Node1">
+      <Handler Name="PrintMessageHandler" Type="AjMessages.PrintMessageHandler, AjMessages"/>
+      <Handler Name="DecrementHandler" Type="AjMessages.SampleApp.Handlers.DecrementHandler, AjMessages.SampleApp"/>
+      <Handler Name="PostHandler" Type="AjMessages.PostHandler, AjMessages"/>
+      <Handler Name="Pipeline1">
+        <Handler Name="DecrementHandler"/>
+        <Handler Name="PostHandler">
+          <Property Name="Action" Value="App1/Node1/Process"/>
+        </Handler>
+      </Handler>
+      <Action Name="Process" Handler="Pipeline1"/>
+    </Node>
+    <Node Name="Node2"/>
+  </Application>
+  
+  <Host Name="Host2" Address="http://localhost:50001/AjMessages" Activate="true">
+    <Application Name="App2">
+      <Node Name="Node1"/>
+      <Node Name="Node2"/>
+    </Application>
+  </Host>
+</AjMessages>
